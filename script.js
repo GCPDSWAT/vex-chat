@@ -4,8 +4,8 @@
    ================================= */
 
 // ADD YOUR SUPABASE DETAILS HERE
-const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_PUBLISHABLE_KEY";
+const SUPABASE_URL = "https://sprhwvrzpltridhikttp.supabase.co/rest/v1/";
+const SUPABASE_ANON_KEY = "sb_publishable_JTH82eb7Tk7s4MEXCQPPGA_6Cn70nKy";
 
 const db = window.supabase.createClient(
   SUPABASE_URL,
