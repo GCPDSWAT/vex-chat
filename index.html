@@ -11,85 +11,122 @@
 </head>
 <body>
 
-<div id="authScreen" class="auth-screen">
-  <div class="auth-card">
-    <div class="brand">VEX<span>CHAT</span></div>
-    <p class="muted">Your conversations, all in one place.</p>
+  <!-- LOGIN / SIGNUP -->
+  <div id="authScreen" class="auth-screen">
+    <div class="auth-card">
+      <div class="brand">VEX<span>CHAT</span></div>
+      <p class="muted">Your conversations, all in one place.</p>
 
-    <div id="authError" class="error"></div>
+      <div id="authError" class="error"></div>
 
-    <input id="authEmail" type="email" placeholder="Email address">
-    <input id="authPassword" type="password" placeholder="Password">
+      <input id="authEmail" type="email" placeholder="Email address">
+      <input id="authPassword" type="password" placeholder="Password">
+      <input id="authUsername" placeholder="Username (for sign up)">
 
-    <input id="authUsername" placeholder="Username (for sign up)">
-
-    <button id="loginBtn">Log In</button>
-    <button id="signupBtn" class="secondary">Create Account</button>
+      <button id="loginBtn">Log In</button>
+      <button id="signupBtn" class="secondary">Create Account</button>
+    </div>
   </div>
-</div>
 
-<div id="app" class="app hidden">
+  <!-- MAIN APP -->
+  <div id="app" class="app hidden">
 
-  <aside class="server-sidebar">
-    <div class="server-logo">V</div>
-    <div class="server-icon active">⌂</div>
-    <div class="server-icon">✉</div>
-    <div class="server-icon">⚙</div>
-  </aside>
+    <!-- SERVER SIDEBAR -->
+    <aside class="server-sidebar">
+      <div class="server-logo">V</div>
 
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <h2>VEXCHAT</h2>
-      <span>⌄</span>
-    </div>
+      <button class="server-icon active" data-view="home" title="Home">⌂</button>
+      <button class="server-icon" data-view="messages" title="Messages">✉</button>
+      <button class="server-icon" data-view="settings" title="Settings">⚙</button>
+    </aside>
 
-    <div class="search-wrap">
-      <input id="userSearch" placeholder="Find users...">
-    </div>
+    <!-- FRIEND SIDEBAR -->
+    <aside class="sidebar">
 
-    <div class="section-title">MESSAGES</div>
-    <div id="friendsList" class="friends-list">
-      <p class="muted">Your friends will appear here.</p>
-    </div>
-
-    <div class="section-title">FRIEND REQUESTS</div>
-    <div id="requestsList"></div>
-
-    <div class="user-panel">
-      <div class="avatar" id="myAvatar">V</div>
-      <div class="user-details">
-        <strong id="myUsername">User</strong>
-        <small>Online</small>
+      <div class="sidebar-header">
+        <h2>VEXCHAT</h2>
+        <span>⌄</span>
       </div>
-      <button id="logoutBtn" class="icon-button" title="Log out">↪</button>
-    </div>
-  </aside>
 
-  <main class="chat-area">
-    <header class="chat-header">
-      <div>
-        <h3 id="chatTitle">Welcome to VEXCHAT</h3>
-        <p id="chatSubtitle">Choose a friend to start chatting.</p>
+      <div class="search-wrap">
+        <input id="userSearch" placeholder="Find users..." autocomplete="off">
+        <div id="userSearchResults"></div>
       </div>
-      <button id="addFriendBtn" class="secondary">+ Add Friend</button>
-    </header>
 
-    <section id="welcome" class="welcome">
-      <div class="welcome-logo">V</div>
-      <h1>Welcome to VEXCHAT</h1>
-      <p>Connect with friends and start a conversation.</p>
-    </section>
+      <div class="section-title">MESSAGES</div>
 
-    <section id="messages" class="messages hidden"></section>
+      <div id="friendsList" class="friends-list">
+        <p class="muted">Your friends will appear here.</p>
+      </div>
 
-    <form id="messageForm" class="message-form hidden">
-      <input id="messageInput" placeholder="Message..." autocomplete="off">
-      <button type="submit">➤</button>
-    </form>
-  </main>
-</div>
+      <div class="section-title">FRIEND REQUESTS</div>
+      <div id="requestsList"></div>
 
-<div id="toast" class="toast"></div>
+      <div class="user-panel">
+        <div class="avatar" id="myAvatar">V</div>
+
+        <div class="user-details">
+          <strong id="myUsername">User</strong>
+          <small>Online</small>
+        </div>
+
+        <button id="logoutBtn" class="icon-button" title="Log out">↪</button>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CHAT AREA -->
+    <main class="chat-area">
+
+      <header class="chat-header">
+        <div>
+          <h3 id="chatTitle">Welcome to VEXCHAT</h3>
+          <p id="chatSubtitle">Choose a friend to start chatting.</p>
+        </div>
+
+        <button id="addFriendBtn" class="secondary">+ Add Friend</button>
+      </header>
+
+      <!-- HOME -->
+      <section id="welcome" class="welcome">
+        <div class="welcome-logo">V</div>
+        <h1>Welcome to VEXCHAT</h1>
+        <p>Connect with friends and start a conversation.</p>
+        <button id="homeAddFriendBtn">+ Add a Friend</button>
+      </section>
+
+      <!-- MESSAGES -->
+      <section id="messages" class="messages hidden"></section>
+
+      <form id="messageForm" class="message-form hidden">
+        <input id="messageInput" placeholder="Message..." autocomplete="off">
+        <button type="submit">➤</button>
+      </form>
+
+      <!-- SETTINGS -->
+      <section id="settingsView" class="settings-view hidden">
+        <div class="settings-card">
+          <h1>Settings</h1>
+          <p class="muted">Your VEXCHAT account information.</p>
+
+          <div class="settings-row">
+            <span>Username</span>
+            <strong id="settingsUsername">User</strong>
+          </div>
+
+          <div class="settings-row">
+            <span>Email</span>
+            <strong id="settingsEmail">Not available</strong>
+          </div>
+
+          <button id="settingsLogoutBtn" class="danger-button">Log Out</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
 
 </body>
 </html>
