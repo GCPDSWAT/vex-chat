@@ -4,7 +4,7 @@
    ================================= */
 
 // ADD YOUR SUPABASE DETAILS HERE
-const SUPABASE_URL = "https://sprhwvrzpltridhikttp.supabase.co/rest/v1/";
+const SUPABASE_URL = "https://sprhwvrzpltridhikttp.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_JTH82eb7Tk7s4MEXCQPPGA_6Cn70nKy";
 
 const db = window.supabase.createClient(
