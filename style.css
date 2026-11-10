@@ -26,6 +26,26 @@ body {
   display: none !important;
 }
 
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  padding: 12px 16px;
+  color: white;
+  background: var(--accent);
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+button:hover {
+  filter: brightness(1.18);
+  transform: translateY(-1px);
+}
+
+input {
+  color: white;
+}
+
 .auth-screen {
   height: 100vh;
   display: flex;
@@ -68,19 +88,14 @@ body {
   border: 1px solid #343740;
   border-radius: 7px;
   background: #111318;
-  color: white;
   outline: none;
   margin-top: 12px;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 7px;
-  padding: 12px 16px;
-  color: white;
-  background: var(--accent);
-  font-weight: bold;
+.auth-card input:focus,
+.search-wrap input:focus,
+.message-form input:focus {
+  border-color: var(--accent);
 }
 
 .auth-card button {
@@ -105,6 +120,7 @@ button {
 
 .server-sidebar {
   width: 70px;
+  flex-shrink: 0;
   background: #111216;
   display: flex;
   align-items: center;
@@ -117,30 +133,42 @@ button {
 .server-icon {
   width: 46px;
   height: 46px;
+  flex-shrink: 0;
   border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #292c35;
   font-size: 21px;
-  cursor: pointer;
 }
 
-.server-logo,
+.server-logo {
+  background: var(--accent);
+  font-weight: bold;
+}
+
+.server-icon {
+  padding: 0;
+  font-size: 23px;
+}
+
 .server-icon.active {
   background: var(--accent);
 }
 
 .sidebar {
   width: 270px;
+  flex-shrink: 0;
   background: var(--sidebar);
   display: flex;
   flex-direction: column;
   border-right: 1px solid #292b31;
+  min-height: 0;
 }
 
 .sidebar-header {
   height: 65px;
+  flex-shrink: 0;
   padding: 20px;
   display: flex;
   justify-content: space-between;
@@ -153,6 +181,34 @@ button {
 
 .search-wrap {
   padding: 10px;
+  position: relative;
+}
+
+.search-wrap input {
+  margin-top: 0;
+}
+
+#userSearchResults {
+  position: absolute;
+  top: calc(100% - 8px);
+  left: 10px;
+  right: 10px;
+  z-index: 10;
+  background: #292c35;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px #0008;
+}
+
+.search-result {
+  padding: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #41434b;
+  font-size: 13px;
+}
+
+.search-result:hover {
+  background: #414bb5;
 }
 
 .section-title {
@@ -177,11 +233,17 @@ button {
   border-radius: 7px;
   cursor: pointer;
   color: #ddd;
+  margin-bottom: 3px;
 }
 
 .friend:hover,
 .friend.selected {
   background: #343740;
+}
+
+.friend button {
+  margin-left: auto;
+  padding: 7px 10px;
 }
 
 .avatar {
@@ -198,6 +260,7 @@ button {
 
 .user-panel {
   margin-top: auto;
+  flex-shrink: 0;
   background: #15161b;
   padding: 12px;
   display: flex;
@@ -211,6 +274,12 @@ button {
   gap: 4px;
   flex: 1;
   min-width: 0;
+  overflow: hidden;
+}
+
+.user-details strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .user-details small {
@@ -220,6 +289,7 @@ button {
 .icon-button {
   background: transparent;
   font-size: 20px;
+  padding: 8px;
 }
 
 .chat-area {
@@ -227,6 +297,7 @@ button {
   min-width: 0;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .chat-header {
@@ -257,6 +328,7 @@ button {
   flex-direction: column;
   text-align: center;
   padding: 20px;
+  gap: 12px;
 }
 
 .welcome-logo {
@@ -268,12 +340,11 @@ button {
   place-items: center;
   font-size: 48px;
   font-weight: bold;
-  margin-bottom: 25px;
+  margin-bottom: 13px;
 }
 
 .welcome p {
   color: var(--muted);
-  margin-top: 12px;
 }
 
 .messages {
@@ -324,16 +395,56 @@ button {
   flex: 1;
   min-width: 0;
   padding: 15px;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 8px;
   outline: none;
   background: #292c35;
-  color: white;
 }
 
 .message-form button {
   width: 48px;
   font-size: 18px;
+}
+
+.settings-view {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.settings-card {
+  max-width: 550px;
+  margin: 20px auto;
+  background: var(--sidebar);
+  border: 1px solid #292b31;
+  border-radius: 12px;
+  padding: 25px;
+}
+
+.settings-card h1 {
+  margin-bottom: 10px;
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 18px 0;
+  border-bottom: 1px solid #343740;
+  overflow-wrap: anywhere;
+}
+
+.settings-row span {
+  color: var(--muted);
+}
+
+.settings-row strong {
+  text-align: right;
+}
+
+.danger-button {
+  background: #a83d48;
+  margin-top: 25px;
 }
 
 .toast {
@@ -344,7 +455,10 @@ button {
   padding: 13px 18px;
   border-radius: 8px;
   display: none;
-  z-index: 5;
+  z-index: 20;
+  max-width: 90%;
+  overflow-wrap: anywhere;
+  box-shadow: 0 8px 25px #0008;
 }
 
 @media(max-width:650px) {
@@ -398,5 +512,13 @@ button {
 
   .auth-card {
     padding: 25px;
+  }
+
+  .chat-header h3 {
+    font-size: 14px;
+  }
+
+  .settings-view {
+    padding: 12px;
   }
 }
